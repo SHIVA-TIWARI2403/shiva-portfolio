@@ -12,34 +12,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal }) => {
   };
 
   return (
-    <footer className="py-12 px-4 border-t border-white/10 relative z-10 bg-[#030712]">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Brand & Note */}
-        <div className="flex items-center gap-3 text-left">
-          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center font-mono font-bold text-xs text-cyan-400">
+    <footer className="py-12 px-4 sm:px-6 border-t border-[#292323] bg-[#090909] text-xs font-mono text-[#a09c9a]">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Brand & Manifesto */}
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-[#101010] border border-[#292323] flex items-center justify-center font-display text-base text-white">
             ST
           </div>
           <div>
-            <div className="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>{PERSONAL_INFO.name}</span>
-              <span className="text-xs text-slate-500 font-mono">portfolio v2.4</span>
+            <div className="font-display text-sm tracking-wider text-white">
+              {PERSONAL_INFO.name} // 2026 ARCHIVE
             </div>
-            <p className="text-xs text-slate-500">
-              Crafted in Ayodhya, India • Crafted with 21st UI &amp; Modern Web Standards
+            <p className="text-[11px] text-[#a09c9a]">
+              Crafted in {PERSONAL_INFO.location} • Autonomous AI &amp; Web Systems
             </p>
           </div>
         </div>
 
-        {/* Quick Links & Terminal Trigger */}
-        <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
+        {/* Center Links */}
+        <div className="flex items-center gap-5 uppercase tracking-wider">
           <button
             onClick={onOpenTerminal}
-            className="flex items-center gap-1 hover:text-cyan-400 transition-colors"
+            className="flex items-center gap-1.5 hover:text-white transition-colors"
           >
-            <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>cli.exe</span>
+            <Terminal className="w-3.5 h-3.5 text-[#e32b3c]" />
+            <span>Terminal</span>
           </button>
-          <span>•</span>
+          <span>//</span>
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
@@ -48,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal }) => {
           >
             GitHub
           </a>
-          <span>•</span>
+          <span>//</span>
           <a
             href={PERSONAL_INFO.linkedin}
             target="_blank"
@@ -59,14 +58,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal }) => {
           </a>
         </div>
 
-        {/* Back to top */}
+        {/* Back to Top */}
         <button
           onClick={scrollToTop}
-          className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-slate-400 hover:text-white hover:border-cyan-500/40 transition-all flex items-center gap-1 text-xs font-mono group"
-          title="Back to Top"
+          className="p-2.5 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] text-white flex items-center gap-1.5 transition-colors group"
+          title="Scroll to Top"
         >
-          <span>Top</span>
-          <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
+          <span className="uppercase text-[11px] font-bold">Top</span>
+          <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform text-[#e32b3c]" />
         </button>
       </div>
     </footer>

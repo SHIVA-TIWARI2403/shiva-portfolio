@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Github, Linkedin, Menu, X } from 'lucide-react';
+import { Terminal, Github, Linkedin, Menu, X, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -12,94 +12,104 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 transition-all duration-300">
-      <nav
-        className={`w-full max-w-6xl transition-all duration-300 rounded-2xl px-5 py-3 flex items-center justify-between ${
-          scrolled
-            ? 'bg-[#0B1120]/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-cyan-950/20'
-            : 'bg-transparent border border-transparent'
-        }`}
-      >
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        scrolled
+          ? 'bg-[#090909]/90 backdrop-blur-md border-[#292323] shadow-xl shadow-black/40 py-3'
+          : 'bg-[#090909]/60 backdrop-blur-sm border-[#292323]/50 py-4'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand */}
-        <a href="#hero" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-mono font-bold text-white shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform">
+        <a href="#hero" className="flex items-center gap-3 group">
+          <div className="w-9 h-9 bg-[#101010] border border-[#292323] flex items-center justify-center font-display text-lg text-white group-hover:border-[#e32b3c] transition-colors">
             ST
           </div>
           <div>
-            <div className="font-bold text-sm tracking-wide text-white group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-              <span>Shiva Tiwari</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+            <div className="font-display text-base tracking-wider text-white flex items-center gap-2">
+              <span>{PERSONAL_INFO.name}</span>
+              <span className="w-1.5 h-1.5 bg-[#e32b3c] rounded-full animate-ping" />
             </div>
-            <div className="text-[11px] text-slate-400 font-mono tracking-tight">AI & Full-Stack Architect</div>
+            <div className="text-[10px] text-[#a09c9a] uppercase tracking-widest font-mono">
+              AI &amp; FULL-STACK ARCHITECT
+            </div>
           </div>
         </a>
 
-        {/* Desktop Nav Items */}
-        <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-xl">
-          <a
-            href="#projects"
-            className="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] rounded-lg transition-all"
-          >
+        {/* Center Editorial Nav */}
+        <nav className="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-[#a09c9a]">
+          <a href="#projects" className="hover:text-white transition-colors">
             Projects
           </a>
-          <a
-            href="#skills"
-            className="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] rounded-lg transition-all"
-          >
-            Tech Stack
+          <a href="#breakdown" className="hover:text-white transition-colors">
+            Breakdown
           </a>
-          <a
-            href="#about"
-            className="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] rounded-lg transition-all"
-          >
-            About
+          <a href="#milestones" className="hover:text-white transition-colors">
+            Milestones
           </a>
-          <a
-            href="#contact"
-            className="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] rounded-lg transition-all"
-          >
+          <a href="#experience" className="hover:text-white transition-colors">
+            Experience
+          </a>
+          <a href="#stack" className="hover:text-white transition-colors">
+            Stack
+          </a>
+          <a href="#contact" className="hover:text-white transition-colors">
             Contact
           </a>
-        </div>
+        </nav>
 
-        {/* Action Buttons */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        {/* Right Actions */}
+        <div className="hidden sm:flex items-center gap-3">
+          {/* Availability Status */}
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#101010] border border-[#292323] text-[11px] font-mono text-[#f2efeb]">
+            <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+            <span>AVAILABLE FOR HIRE</span>
+          </div>
+
           {/* Terminal Launcher */}
           <button
             onClick={onOpenTerminal}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-900/40 hover:border-cyan-400 transition-all shadow-sm shadow-cyan-500/10 active:scale-95"
-            title="Open Interactive Terminal"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] text-xs font-mono text-[#f2efeb] transition-all active:scale-95"
+            title="Launch Interactive Terminal"
           >
-            <Terminal className="w-3.5 h-3.5" />
-            <span>Terminal</span>
-            <span className="text-[10px] bg-cyan-500/20 px-1 py-0.2 rounded text-cyan-200">CLI</span>
+            <Terminal className="w-3.5 h-3.5 text-[#e32b3c]" />
+            <span>CLI</span>
           </button>
 
-          {/* Social Icons */}
+          {/* Socials */}
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:border-white/20 transition-all hover:scale-105"
-            aria-label="GitHub Profile"
+            rel="noreferrer"
+            className="p-2 bg-[#101010] border border-[#292323] text-[#a09c9a] hover:text-white hover:border-[#e32b3c] transition-colors"
+            aria-label="GitHub"
           >
             <Github className="w-4 h-4" />
           </a>
           <a
             href={PERSONAL_INFO.linkedin}
             target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:border-white/20 transition-all hover:scale-105"
-            aria-label="LinkedIn Profile"
+            rel="noreferrer"
+            className="p-2 bg-[#101010] border border-[#292323] text-[#a09c9a] hover:text-white hover:border-[#e32b3c] transition-colors"
+            aria-label="LinkedIn"
           >
             <Linkedin className="w-4 h-4" />
+          </a>
+
+          {/* Contact Direct */}
+          <a
+            href="#contact"
+            className="solid-crimson-button px-4 py-2 text-xs flex items-center gap-1.5"
+          >
+            <span>Let's Talk</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
 
@@ -107,63 +117,66 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={onOpenTerminal}
-            className="p-2 rounded-xl bg-cyan-950/50 border border-cyan-500/40 text-cyan-400"
-            aria-label="Open Terminal"
+            className="p-2 bg-[#101010] border border-[#292323] text-[#e32b3c]"
+            aria-label="Terminal"
           >
             <Terminal className="w-4 h-4" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white"
-            aria-label="Toggle menu"
+            className="p-2 bg-[#101010] border border-[#292323] text-white"
+            aria-label="Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
-      </nav>
+      </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Dropdown */}
       {mobileMenuOpen && (
-        <div className="absolute top-20 left-4 right-4 bg-[#0B1120] border border-white/15 rounded-2xl p-5 shadow-2xl flex flex-col gap-3 md:hidden z-50 backdrop-blur-2xl">
+        <div className="bg-[#101010] border-b border-[#292323] px-6 py-5 flex flex-col gap-3 md:hidden">
           <a
             href="#projects"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 py-2 border-b border-white/5"
+            className="text-sm font-semibold uppercase tracking-wider text-[#f2efeb] py-2 border-b border-[#292323]"
           >
             Projects
           </a>
           <a
-            href="#skills"
+            href="#breakdown"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 py-2 border-b border-white/5"
+            className="text-sm font-semibold uppercase tracking-wider text-[#f2efeb] py-2 border-b border-[#292323]"
           >
-            Tech Stack
+            Breakdown
           </a>
           <a
-            href="#about"
+            href="#milestones"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 py-2 border-b border-white/5"
+            className="text-sm font-semibold uppercase tracking-wider text-[#f2efeb] py-2 border-b border-[#292323]"
           >
-            About
+            Milestones
+          </a>
+          <a
+            href="#experience"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-semibold uppercase tracking-wider text-[#f2efeb] py-2 border-b border-[#292323]"
+          >
+            Experience
+          </a>
+          <a
+            href="#stack"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-semibold uppercase tracking-wider text-[#f2efeb] py-2 border-b border-[#292323]"
+          >
+            Stack
           </a>
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 py-2 border-b border-white/5"
+            className="text-sm font-semibold uppercase tracking-wider text-[#e32b3c] py-2"
           >
-            Contact
+            Contact Direct
           </a>
-          <div className="flex items-center justify-between pt-2">
-            <span className="text-xs text-slate-400">Socials</span>
-            <div className="flex gap-2">
-              <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-white/5 text-slate-300">
-                <Github className="w-4 h-4" />
-              </a>
-              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-white/5 text-slate-300">
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
         </div>
       )}
     </header>

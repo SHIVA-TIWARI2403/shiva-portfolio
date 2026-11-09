@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { CanvasBackground } from './components/CanvasBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { BentoGrid } from './components/BentoGrid';
-import { SkillsMatrix } from './components/SkillsMatrix';
-import { AboutSection } from './components/AboutSection';
+import { ProjectsSection } from './components/ProjectsSection';
+import { BreakdownSection } from './components/BreakdownSection';
+import { MilestonesSection } from './components/MilestonesSection';
+import { SoftwareSection } from './components/SoftwareSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
@@ -25,26 +25,27 @@ export function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#030712] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300">
-      {/* Interactive particle canvas */}
-      <CanvasBackground />
+    <div className="relative min-h-screen bg-[#090909] text-[#f2efeb] font-sans antialiased selection:bg-[#e32b3c]/30 selection:text-[#ff5d65]">
+      {/* Cinematic Film Grain Overlay */}
+      <div className="grain-overlay" />
 
-      {/* Floating navigation */}
+      {/* Editorial Navbar */}
       <Navbar onOpenTerminal={() => setTerminalOpen(true)} />
 
       {/* Main Sections */}
       <main className="relative z-10">
         <Hero onOpenTerminal={() => setTerminalOpen(true)} />
-        <BentoGrid />
-        <SkillsMatrix />
-        <AboutSection />
+        <ProjectsSection />
+        <BreakdownSection />
+        <MilestonesSection />
+        <SoftwareSection />
         <ContactSection />
       </main>
 
       {/* Footer */}
       <Footer onOpenTerminal={() => setTerminalOpen(true)} />
 
-      {/* 21st Century CLI Terminal Modal */}
+      {/* CLI Terminal Modal */}
       <InteractiveTerminal
         isOpen={terminalOpen}
         onClose={() => setTerminalOpen(false)}

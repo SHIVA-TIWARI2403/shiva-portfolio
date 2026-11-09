@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Terminal, Copy, Check, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Terminal, Copy, Check, ChevronDown, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -17,101 +17,158 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
       particleCount: 50,
       spread: 60,
       origin: { y: 0.8 },
-      colors: ['#06b6d4', '#10b981', '#8b5cf6']
+      colors: ['#e32b3c', '#ff5d65', '#ffffff']
     });
     setTimeout(() => setCopied(false), 2500);
   };
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-32 px-4 overflow-hidden">
-      {/* Background radial spotlights */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-cyan-500/15 via-indigo-500/15 to-purple-600/10 blur-[130px] pointer-events-none rounded-full" />
-      <div className="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-emerald-500/10 blur-[110px] pointer-events-none rounded-full" />
+    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 overflow-hidden border-b border-[#292323]">
+      {/* Background Subtle Crimson Ambient Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#e32b3c]/10 blur-[140px] pointer-events-none rounded-full" />
+      <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-[#ff5d65]/5 blur-[120px] pointer-events-none rounded-full" />
 
-      <div className="max-w-5xl mx-auto relative z-10 text-center">
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md mb-8 hover:border-cyan-500/40 transition-colors">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-          </span>
-          <span className="text-xs font-mono text-slate-300">
-            {PERSONAL_INFO.status}
-          </span>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Top Metadata Row (Renando Style) */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#292323] text-xs font-mono text-[#a09c9a]">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-[#e32b3c] rounded-full animate-ping" />
+            <span className="text-white font-semibold">{PERSONAL_INFO.location}</span>
+            <span className="text-[#a09c9a]">[{PERSONAL_INFO.coordinates}]</span>
+          </div>
+          <div className="font-handwriting text-xl text-[#ff5d65] font-medium hidden sm:block">
+            "{PERSONAL_INFO.manifesto}"
+          </div>
+          <div className="text-[11px] uppercase tracking-wider text-slate-400">
+            INDEX v2.6.4 • 2026 EDITION
+          </div>
         </div>
 
-        {/* Hero Title */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
-          Architecting <span className="gradient-text">Autonomous AI</span> &amp; Modern <span className="gradient-text-emerald">Web Platforms</span>.
-        </h1>
+        {/* Hero Main Grid: Massive Anton Headline & Technical Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-12 md:py-16">
+          <div className="lg:col-span-8">
+            <div className="inline-block px-3 py-1 bg-[#101010] border border-[#292323] text-[#e32b3c] font-mono text-xs uppercase tracking-widest mb-4">
+              {PERSONAL_INFO.titleDisplay}
+            </div>
 
-        {/* Hero Subtitle */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-400 mb-10 font-normal leading-relaxed">
-          I'm <span className="text-slate-100 font-semibold">{PERSONAL_INFO.name}</span> (<span className="text-slate-300 font-mono text-sm">{PERSONAL_INFO.formalName}</span>), a Full-Stack Web Developer &amp; AI Engineer based in <span className="text-cyan-400">{PERSONAL_INFO.location}</span>. Creator of <span className="text-slate-200 font-medium">ToolMatrix AI</span>, <span className="text-slate-200 font-medium">SlideCraft AI</span>, and <span className="text-slate-200 font-medium">Milo</span>.
-        </p>
+            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-[#f2efeb] leading-[0.9] tracking-tight mb-6">
+              SHIVA <span className="text-[#e32b3c]">TIWARI</span>
+            </h1>
 
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
-          <a
-            href="#projects"
-            className="group px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all"
-          >
-            <span>Explore Flagship Work</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+            <p className="text-base sm:text-lg md:text-xl text-[#a09c9a] max-w-2xl font-normal leading-relaxed mb-8">
+              Full-Stack Web Developer &amp; Autonomous AI Systems Architect from Ayodhya, India. Creator of <strong className="text-white font-semibold">ToolMatrix AI</strong>, <strong className="text-white font-semibold">SlideCraft AI</strong>, and founder of <strong className="text-white font-semibold">Milo</strong>. Obsessed with high velocity, rock-solid backends, and cinematic interfaces.
+            </p>
 
-          <button
-            onClick={onOpenTerminal}
-            className="px-6 py-3 rounded-xl bg-[#0B1120] border border-cyan-500/30 text-cyan-300 font-mono text-sm flex items-center gap-2.5 hover:bg-cyan-950/30 hover:border-cyan-400 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-black/40"
-          >
-            <Terminal className="w-4 h-4 text-cyan-400" />
-            <span>Launch CLI Terminal</span>
-          </button>
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                className="solid-crimson-button px-7 py-3.5 text-xs flex items-center gap-2 shadow-lg shadow-[#e32b3c]/20"
+              >
+                <span>Explore Selected Works</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
 
-          <button
-            onClick={handleCopyEmail}
-            className="px-5 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 font-mono text-sm flex items-center gap-2 hover:bg-white/[0.08] hover:text-white transition-all active:scale-95"
-            title="Click to copy email address"
-          >
-            {copied ? (
-              <>
-                <Check className="w-4 h-4 text-emerald-400" />
-                <span className="text-emerald-400 font-sans font-medium text-xs">Copied to clipboard!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4 text-slate-400" />
-                <span>tiwarisatendrapratap@gmail.com</span>
-              </>
-            )}
-          </button>
+              <button
+                onClick={onOpenTerminal}
+                className="px-6 py-3.5 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] text-[#f2efeb] font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all active:scale-95"
+              >
+                <Terminal className="w-4 h-4 text-[#e32b3c]" />
+                <span>Launch CLI Terminal</span>
+              </button>
+
+              <button
+                onClick={handleCopyEmail}
+                className="px-5 py-3.5 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] text-[#a09c9a] hover:text-white font-mono text-xs flex items-center gap-2 transition-all"
+                title="Copy Email"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-[#10b981]" />
+                    <span className="text-[#10b981]">COPIED TO CLIPBOARD</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-[#e32b3c]" />
+                    <span>{PERSONAL_INFO.email}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Right Column: Stylized Renando Technical Portrait / Card */}
+          <div className="lg:col-span-4 flex justify-center">
+            <div className="w-full max-w-sm bg-[#101010] border border-[#292323] p-6 relative group hover:border-[#e32b3c] transition-all">
+              {/* Technical crosshairs on corners */}
+              <div className="absolute top-2 left-2 text-[10px] font-mono text-[#a09c9a]">01 // TECH ID</div>
+              <div className="absolute top-2 right-2 text-[10px] font-mono text-[#e32b3c]">SYS_ACTIVE</div>
+
+              <div className="mt-6 mb-4 aspect-square bg-[#161616] border border-[#292323] flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#e32b3c]/15 via-transparent to-transparent pointer-events-none" />
+                <div className="w-20 h-20 bg-[#090909] border border-[#e32b3c] flex items-center justify-center font-display text-4xl text-white shadow-xl shadow-[#e32b3c]/20 mb-4 group-hover:scale-105 transition-transform">
+                  ST
+                </div>
+                <div className="font-display text-xl text-white tracking-wide">
+                  SHIVA TIWARI
+                </div>
+                <div className="text-xs font-mono text-[#a09c9a] mt-1">
+                  @{PERSONAL_INFO.handle}
+                </div>
+                <div className="text-[11px] font-mono text-[#ff5d65] mt-2 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>FOUNDER &amp; BUILDER</span>
+                </div>
+              </div>
+
+              <div className="space-y-2 text-xs font-mono pt-3 border-t border-[#292323]">
+                <div className="flex justify-between text-[#a09c9a]">
+                  <span>FRAMEWORK</span>
+                  <span className="text-white">REACT + FASTAPI</span>
+                </div>
+                <div className="flex justify-between text-[#a09c9a]">
+                  <span>AI ENGINE</span>
+                  <span className="text-white">GEMINI 2.5 / 3.8</span>
+                </div>
+                <div className="flex justify-between text-[#a09c9a]">
+                  <span>DATABASE</span>
+                  <span className="text-white">SUPABASE RLS</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Metrics & Impact Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-white/10">
+        {/* Bottom Editorial Stats Bar (Renando Style) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-[#292323]">
           {PERSONAL_INFO.stats.map((stat, idx) => (
             <div
               key={idx}
-              className="p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all text-left group"
+              className="p-4 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] transition-all"
             >
-              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono mb-1 group-hover:text-cyan-400 transition-colors">
+              <div className="font-display text-3xl sm:text-4xl text-[#f2efeb] mb-1">
                 {stat.value}
               </div>
-              <div className="text-xs font-semibold text-slate-300 mb-0.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-white">
                 {stat.label}
               </div>
-              <div className="text-[11px] text-slate-500 leading-snug">
+              <div className="text-[11px] font-mono text-[#a09c9a] mt-0.5">
                 {stat.subtext}
               </div>
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="flex justify-center mt-12">
-        <a href="#projects" className="text-slate-500 hover:text-slate-300 animate-bounce transition-colors" aria-label="Scroll to projects">
-          <ChevronDown className="w-6 h-6" />
-        </a>
+        {/* Scroll Indicator */}
+        <div className="flex items-center justify-between pt-10 text-xs font-mono text-[#a09c9a]">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-[#e32b3c]" />
+            <span>SCROLL TO EXPLORE ARCHITECTURE</span>
+          </div>
+          <a href="#projects" className="hover:text-white transition-colors" aria-label="Scroll">
+            <ChevronDown className="w-5 h-5 animate-bounce" />
+          </a>
+        </div>
       </div>
     </section>
   );
