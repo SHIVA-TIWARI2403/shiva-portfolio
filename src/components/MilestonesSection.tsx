@@ -1,13 +1,21 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Award, Briefcase, MapPin } from 'lucide-react';
 import { MILESTONES, EXPERIENCES } from '../data/portfolioData';
+import { sounds } from '../utils/sound';
 
 export const MilestonesSection: React.FC = () => {
   return (
     <section id="milestones" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto border-b border-[#292323]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Left: Milestones & Recognitions (Renando Style .recognition) */}
-        <div className="lg:col-span-7">
+        {/* Left: Milestones & Recognitions */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="lg:col-span-7"
+        >
           <div className="flex items-center gap-2 text-xs font-mono text-[#e32b3c] uppercase tracking-widest mb-2">
             <Award className="w-3.5 h-3.5" />
             <span>[03] MILESTONES &amp; RECOGNITIONS</span>
@@ -18,9 +26,15 @@ export const MilestonesSection: React.FC = () => {
 
           <div className="space-y-4">
             {MILESTONES.map((item, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="p-5 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ x: 6, borderColor: '#e32b3c' }}
+                onMouseEnter={() => sounds.hover()}
+                className="p-5 bg-[#101010] border border-[#292323] transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-1">
@@ -44,13 +58,20 @@ export const MilestonesSection: React.FC = () => {
                     {item.badge}
                   </span>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right: Experience Timeline (.experience-row) */}
-        <div id="experience" className="lg:col-span-5">
+        {/* Right: Experience Timeline */}
+        <motion.div
+          id="experience"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="lg:col-span-5"
+        >
           <div className="flex items-center gap-2 text-xs font-mono text-[#e32b3c] uppercase tracking-widest mb-2">
             <Briefcase className="w-3.5 h-3.5" />
             <span>[04] CAREER PATHWAY</span>
@@ -61,9 +82,15 @@ export const MilestonesSection: React.FC = () => {
 
           <div className="space-y-6">
             {EXPERIENCES.map((exp, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="p-6 bg-[#101010] border border-[#292323] hover:border-[#e32b3c] transition-all relative group"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                whileHover={{ y: -4, borderColor: '#e32b3c' }}
+                onMouseEnter={() => sounds.hover()}
+                className="p-6 bg-[#101010] border border-[#292323] transition-colors relative group"
               >
                 <div className="text-xs font-mono text-[#e32b3c] mb-1">
                   {exp.period}
@@ -82,10 +109,10 @@ export const MilestonesSection: React.FC = () => {
                 <p className="text-xs text-[#f2efeb]/80 leading-relaxed">
                   {exp.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

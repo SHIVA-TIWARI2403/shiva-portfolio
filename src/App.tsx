@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { ScrollProgress } from './components/ScrollProgress';
+import { CursorSpotlight } from './components/CursorSpotlight';
+import { MarqueeTicker } from './components/MarqueeTicker';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProjectsSection } from './components/ProjectsSection';
@@ -26,8 +29,14 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-[#090909] text-[#f2efeb] font-sans antialiased selection:bg-[#e32b3c]/30 selection:text-[#ff5d65]">
+      {/* Scroll Progress Bar at very top */}
+      <ScrollProgress />
+
       {/* Cinematic Film Grain Overlay */}
       <div className="grain-overlay" />
+
+      {/* Trailing Cursor Spotlight */}
+      <CursorSpotlight />
 
       {/* Editorial Navbar */}
       <Navbar onOpenTerminal={() => setTerminalOpen(true)} />
@@ -35,6 +44,7 @@ export function App() {
       {/* Main Sections */}
       <main className="relative z-10">
         <Hero onOpenTerminal={() => setTerminalOpen(true)} />
+        <MarqueeTicker />
         <ProjectsSection />
         <BreakdownSection />
         <MilestonesSection />
