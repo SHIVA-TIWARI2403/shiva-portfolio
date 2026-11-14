@@ -44,13 +44,28 @@ export const PERSONAL_INFO = {
   status: "AVAILABLE FOR HIGH-IMPACT ROLES",
   stats: [
     { label: "AI MODELS BENCHMARKED", value: "40+", subtext: "Live in ToolMatrix AI" },
-    { label: "PRODUCTION APPS", value: "06", subtext: "Deployed on Cloud & DB" },
+    { label: "PRODUCTION APPS", value: "07", subtext: "Deployed on Cloud & DB" },
     { label: "CODE COMMITS", value: "250+", subtext: "Continuous active shipping" },
     { label: "API RELIABILITY", value: "99.9%", subtext: "Zero-downtime architecture" }
   ]
 };
 
 export const FEATURED_PROJECTS: Project[] = [
+  {
+    id: "portify-tunnel-saas",
+    title: "PORTIFY SAAS",
+    subtitle: "Instant Localhost Tunnel & Sharing Platform with Worldwide HTTPS Relays",
+    description: "Full-stack developer productivity SaaS allowing engineers to share local development servers (ports 3000, 5050, 5173, 8080) worldwide via temporary expiring links, PIN protection, 1-click WhatsApp sharing, and mobile QR barcodes without manual cloud deployment.",
+    tag: "DEVELOPER TOOLING",
+    category: "Full-Stack",
+    role: "Lead Full-Stack Architect",
+    year: "2025-2026",
+    tags: ["Next.js 16", "TypeScript", "Supabase OAuth", "Tailwind CSS", "localtunnel", "Vercel"],
+    metrics: "Worldwide HTTPS Tunnels • 1-Click WhatsApp Share • 3-Site/12h Quota • Admin Oversight",
+    liveUrl: "https://github.com/SHIVA-TIWARI2403/portify",
+    githubUrl: "https://github.com/SHIVA-TIWARI2403/portify",
+    featured: true
+  },
   {
     id: "toolmatrix-ai",
     title: "TOOLMATRIX AI",
