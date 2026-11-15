@@ -52,6 +52,21 @@ export const PERSONAL_INFO = {
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    id: "folioforge-builder",
+    title: "FOLIOFORGE BUILDER",
+    subtitle: "Minimalist Glassmorphic Portfolio & ATS Resume Creator in Forest & Maroon",
+    description: "An interactive, dual-mode web platform that allows anyone to design, customize, and export interactive Web Portfolios and ATS-Optimized Resumes in real-time with 1-click A4 PDF and standalone HTML download.",
+    tag: "CREATOR PLATFORM",
+    category: "Full-Stack",
+    role: "Solo Creator & Architect",
+    year: "2026",
+    tags: ["React 19", "TypeScript", "Tailwind CSS", "Vite", "Glassmorphism", "Print CSS"],
+    metrics: "Dual-Mode Builder • 1-Click PDF Export • Standalone HTML Export • LocalStorage Sync",
+    liveUrl: "https://github.com/SHIVA-TIWARI2403/folioforge",
+    githubUrl: "https://github.com/SHIVA-TIWARI2403/folioforge",
+    featured: true
+  },
+  {
     id: "portify-tunnel-saas",
     title: "PORTIFY SAAS",
     subtitle: "Instant Localhost Tunnel & Sharing Platform with Worldwide HTTPS Relays",
@@ -215,8 +230,8 @@ export const SOFTWARE_STACK = [
 
 export const TERMINAL_COMMANDS: Record<string, string> = {
   help: "COMMANDS:\n  • about    - Biography & editorial manifesto\n  • projects - Flagship software list\n  • skills   - Technical arsenal\n  • matrix   - Launch ToolMatrix AI live benchmark\n  • contact  - Direct coordinates\n  • clear    - Clear screen\n  • sudo hire-me - Reveal secret perk 🎉",
-  about: "Shiva Tiwari (Satendra Pratap Tiwari) is a Full-Stack Web Developer & AI Systems Architect based in Ayodhya, India.\nCreator of ToolMatrix AI, SlideCraft AI, and Founder of Milo.\nPassionate about bleeding-edge interfaces, robust databases, and autonomous AI agents.",
-  projects: "1. ToolMatrix AI (Live 4-way comparison engine with 40+ models)\n2. SlideCraft AI (Generative PPTX maker with Gamma-style cards)\n3. Milo Social (Hobby networking app with Supabase Realtime)\n4. Alpha Trading Engine (Algorithmic risk manager)",
+  about: "Shiva Tiwari (Satendra Pratap Tiwari) is a Full-Stack Web Developer & AI Systems Architect based in Ayodhya, India.\nCreator of FolioForge Builder, ToolMatrix AI, SlideCraft AI, and Founder of Milo.\nPassionate about bleeding-edge interfaces, robust databases, and autonomous AI agents.",
+  projects: "1. FolioForge Builder (Glassmorphic Portfolio & ATS Resume Creator in Forest & Maroon)\n2. ToolMatrix AI (Live 4-way comparison engine with 40+ models)\n3. SlideCraft AI (Generative PPTX maker with Gamma-style cards)\n4. Milo Social (Hobby networking app with Supabase Realtime)\n5. Alpha Trading Engine (Algorithmic risk manager)",
   skills: "• Frontend: React, Vite, Tailwind CSS, TypeScript, 21st UI, Canvas\n• Backend & AI: Python, FastAPI, Supabase, PostgreSQL, Gemini API\n• Cloud: Netlify, GitHub Actions, Docker",
   contact: "Email: tiwarisatendrapratap@gmail.com\nLinkedIn: https://www.linkedin.com/in/satendra-pratap-t-570617449/\nGitHub: https://github.com/SHIVA-TIWARI2403",
   matrix: "Launching ToolMatrix AI... visit: https://shiva-tiwari2403.github.io/ai-tool-matrix/",
