@@ -4,7 +4,7 @@ import { Layers, Cpu, Database, Zap, CheckCircle2, ArrowRight } from 'lucide-rea
 import { sounds } from '../utils/sound';
 
 export const BreakdownSection: React.FC = () => {
-  const [selectedShot, setSelectedShot] = useState<'toolmatrix' | 'slidecraft' | 'milo'>('toolmatrix');
+  const [selectedShot, setSelectedShot] = useState<'folioforge' | 'toolmatrix' | 'slidecraft' | 'milo'>('folioforge');
 
   return (
     <section id="breakdown" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto border-b border-[#292323]">
@@ -30,8 +30,8 @@ export const BreakdownSection: React.FC = () => {
         </div>
 
         {/* Shot Controls */}
-        <div className="flex bg-[#101010] border border-[#292323] p-1 font-mono text-xs">
-          {(['toolmatrix', 'slidecraft', 'milo'] as const).map((shot, idx) => (
+        <div className="flex flex-wrap bg-[#101010] border border-[#292323] p-1 font-mono text-xs">
+          {(['folioforge', 'toolmatrix', 'slidecraft', 'milo'] as const).map((shot, idx) => (
             <button
               key={shot}
               onMouseEnter={() => sounds.hover()}
@@ -39,13 +39,13 @@ export const BreakdownSection: React.FC = () => {
                 sounds.click();
                 setSelectedShot(shot);
               }}
-              className={`px-4 py-2 uppercase transition-all relative ${
+              className={`px-3 sm:px-4 py-2 uppercase transition-all relative ${
                 selectedShot === shot
                   ? 'bg-[#e32b3c] text-white font-bold'
                   : 'text-[#a09c9a] hover:text-white'
               }`}
             >
-              0{idx + 1} // {shot === 'toolmatrix' ? 'ToolMatrix' : shot === 'slidecraft' ? 'SlideCraft' : 'Milo'}
+              0{idx + 1} // {shot === 'folioforge' ? 'FolioForge' : shot === 'toolmatrix' ? 'ToolMatrix' : shot === 'slidecraft' ? 'SlideCraft' : 'Milo'}
             </button>
           ))}
         </div>
@@ -54,6 +54,82 @@ export const BreakdownSection: React.FC = () => {
       {/* Breakdown Display Panel with AnimatePresence */}
       <div className="bg-[#101010] border border-[#292323] p-6 sm:p-10 relative overflow-hidden">
         <AnimatePresence mode="wait">
+          {selectedShot === 'folioforge' && (
+            <motion.div
+              key="folioforge"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            >
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-block px-3 py-1 bg-[#161616] border border-[#292323] text-[#e32b3c] font-mono text-xs uppercase tracking-wider">
+                  CREATOR PLATFORM &amp; ATS ENGINE
+                </div>
+                <h3 className="font-display text-3xl sm:text-4xl text-white">
+                  DUAL-MODE GLASSMORPHIC RESUME &amp; PORTFOLIO STUDIO
+                </h3>
+                <p className="text-sm sm:text-base text-[#a09c9a] leading-relaxed">
+                  FolioForge enables developers and creators to design, preview, and export high-conversion web portfolios and ATS-optimized printable resumes with Forest Green and Maroon glassmorphic palettes. Features instant split-screen synchronization, local device avatar ingestion, and zero-dependency standalone HTML compilation.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-[#292323] font-mono text-xs">
+                  <div>
+                    <span className="text-[#a09c9a] block text-[10px]">PREVIEW ENGINE</span>
+                    <span className="text-white font-bold mt-1 block">Live Synchronized</span>
+                  </div>
+                  <div>
+                    <span className="text-[#a09c9a] block text-[10px]">EXPORT MODES</span>
+                    <span className="text-white font-bold mt-1 block">PDF + Standalone HTML</span>
+                  </div>
+                  <div>
+                    <span className="text-[#a09c9a] block text-[10px]">THEME PALETTE</span>
+                    <span className="text-[#ff5d65] font-bold mt-1 block">Forest &amp; Maroon Glass</span>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="https://github.com/SHIVA-TIWARI2403/folioforge"
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={() => sounds.hover()}
+                    onClick={() => sounds.click()}
+                    className="solid-crimson-button inline-flex items-center gap-2 px-5 py-2.5 text-xs active:scale-95"
+                  >
+                    <span>Inspect FolioForge Architecture</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Architecture Graphic */}
+              <div className="lg:col-span-5 bg-[#090909] border border-[#292323] p-6 space-y-3 font-mono text-xs">
+                <div className="text-[#e32b3c] pb-2 border-b border-[#292323] flex justify-between">
+                  <span>// FOLIOFORGE PIPELINE</span>
+                  <span>STATUS: 200 OK</span>
+                </div>
+                {[
+                  { step: '01. React 19 State & LocalStorage Persistence', icon: <Database className="w-4 h-4 text-emerald-400" /> },
+                  { step: '02. Live Split-Screen DOM Synchronization', icon: <Layers className="w-4 h-4 text-cyan-400" /> },
+                  { step: '03. Native @media print A4 Page Layout', icon: <Zap className="w-4 h-4 text-[#ff5d65]" /> },
+                  { step: '04. Single-File Standalone HTML Compiler', icon: <CheckCircle2 className="w-4 h-4 text-[#e32b3c]" />, active: true }
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: 15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className={`p-3 bg-[#101010] border ${item.active ? 'border-[#e32b3c] text-white' : 'border-[#292323]'} flex items-center justify-between`}
+                  >
+                    <span>{item.step}</span>
+                    {item.icon}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
           {selectedShot === 'toolmatrix' && (
             <motion.div
               key="toolmatrix"
