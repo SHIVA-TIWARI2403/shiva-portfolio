@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Linkedin, Github, Send, Copy, Check, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { Linkedin, Github, Send, Copy, Check, ArrowUpRight, MessageSquare, Loader2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -8,6 +8,7 @@ export const ContactSection: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleCopy = () => {
@@ -24,21 +25,26 @@ export const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) return;
+    if (!name || !email || !message || isSubmitting) return;
 
-    setSubmitted(true);
-    confetti({
-      particleCount: 120,
-      spread: 100,
-      origin: { y: 0.6 },
-      colors: ['#e32b3c', '#ff5d65', '#ffffff']
-    });
+    setIsSubmitting(true);
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(`Hi Shiva,\n\n${message}\n\nBest,\n${name} (${email})`);
     setTimeout(() => {
-      window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
-    }, 800);
+      setIsSubmitting(false);
+      setSubmitted(true);
+      confetti({
+        particleCount: 140,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#e32b3c', '#ff5d65', '#ffffff']
+      });
+
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`Hi Shiva,\n\n${message}\n\nBest regards,\n${name} (${email})`);
+      setTimeout(() => {
+        window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
+      }, 700);
+    }, 900);
   };
 
   return (
@@ -196,10 +202,20 @@ export const ContactSection: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="solid-crimson-button w-full py-3.5 text-xs flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="solid-crimson-button w-full py-3.5 text-xs flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>TRANSMIT MESSAGE DIRECTLY</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <span>ENCRYPTING & DISPATCHING TRANSMISSION...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>TRANSMIT MESSAGE DIRECTLY</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
