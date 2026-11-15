@@ -10,8 +10,10 @@ Live URL: [https://shiva-tiwari2403.github.io/shiva-portfolio/](https://shiva-ti
 
 A responsive single-page web portfolio featuring:
 - **Interactive UI Components:** 3D perspective mouse-tilt cards, cursor spotlight illumination, and smooth scroll progress indicators.
-- **Project Showcase:** Filterable software directory covering full-stack applications, developer tools, and systems projects.
-- **Interactive Terminal Drawer:** In-browser CLI emulator supporting basic commands (`help`, `about`, `skills`, `projects`).
+- **Flagship Project Showcase:** Featuring **FolioForge Builder**, **Portify SaaS**, **ToolMatrix AI**, **SlideCraft AI**, and **Milo Social**.
+- **Engineering Systems Breakdown:** Interactive tabbed deep-dive into real-world architecture pipelines, state management, and export engines.
+- **Interactive Terminal Drawer:** In-browser CLI emulator supporting basic commands (`help`, `about`, `skills`, `projects`, `matrix`, `contact`).
+- **Direct Transmission Desk:** Interactive dispatch form with real-time encoding feedback and celebratory confetti.
 - **Typography & Theme:** Dark editorial styling with deep obsidian backgrounds, warm off-white contrast typography, and crimson accents.
 
 ---
