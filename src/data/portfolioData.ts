@@ -77,7 +77,7 @@ export const FEATURED_PROJECTS: Project[] = [
     year: "2025-2026",
     tags: ["Next.js 16", "TypeScript", "Supabase OAuth", "Tailwind CSS", "localtunnel", "Vercel"],
     metrics: "Worldwide HTTPS Tunnels • 1-Click WhatsApp Share • 3-Site/12h Quota • Admin Oversight",
-    liveUrl: "https://github.com/SHIVA-TIWARI2403/portify",
+    liveUrl: "https://portify-hub.vercel.app",
     githubUrl: "https://github.com/SHIVA-TIWARI2403/portify",
     featured: true
   },
